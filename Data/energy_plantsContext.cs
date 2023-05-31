@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using mvc_energy_plants.Models;
+
+    public class energy_plantsContext : DbContext
+    {
+        public energy_plantsContext (DbContextOptions<energy_plantsContext> options)
+            : base(options)
+        {
+        }
+
+        public DbSet<mvc_energy_plants.Models.Project> Project { get; set; } = default!;
+    }

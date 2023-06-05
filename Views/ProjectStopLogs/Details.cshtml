@@ -1,0 +1,47 @@
+﻿@model mvc_energy_plants.Models.ProjectStopLog
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details Project Log</h1>
+<a class="btn btn-primary" asp-controller="Projects" asp-action="Details" asp-route-id="@Model?.ProjectId"><i class="material-icons">arrow_back</i></a>
+<a class="btn btn-secondary" asp-controller="ProjectStopLogs" asp-action="Edit" asp-route-id="@Model?.Id"><i class="material-icons">edit</i></a>
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProjectId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProjectId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StopDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StopDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Classification)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Classification)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cause)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cause)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Action)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Action)
+        </dd>
+    </dl>
+</div>
+<div>
+</div>

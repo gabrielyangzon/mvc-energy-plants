@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using mvc_energy_plants.Models;
+using Project = mvc_energy_plants.Models.Project;
 
 namespace mvc_energy_plants.Controllers
 {
@@ -54,8 +56,14 @@ namespace mvc_energy_plants.Controllers
                 return NotFound();
             }
 
-            return View(project);
+            var projectLogs = _context.ProjectStopLog.Where(m => m.ProjectId == id).ToList();
+
+
+            var tuple = new Tuple<Project, List<ProjectStopLog>>(project, projectLogs);
+            return View(tuple);
         }
+
+
 
         // GET: Projects/Create
         public IActionResult Create()

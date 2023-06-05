@@ -10,15 +10,9 @@
     <a asp-action="Create"><i class="material-icons" style="font-size:36px">note_add</i></a>
 </p>
 
-<form asp-controller="Projects" asp-action="Index">
-    <p>
-        Project Name: <input type="text" name="SearchString" />
-        <input type="submit" value="Filter" />
-    </p>
-</form>
 
 
-<table class="table table-bordered table-hover">
+<table id="indexTable" class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>
@@ -36,12 +30,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.PowerGeneration)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Longitude)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Latitude)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.StartDate)
             </th>
@@ -67,24 +56,30 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.PowerGeneration)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Longitude)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Latitude)
-                </td>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.StartDate)
                 </td>
                 <td>
 
 
-                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="material-icons m-1">mode_edit</i></a>
-                    <a asp-action="Details" asp-route-id="@item.Id"><i style="color:green" class="material-icons m-1">info</i></a>
-                    <a asp-action="Delete" asp-route-id="@item.Id"><i style="color:red" class="material-icons m-1">delete</i></a>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i style="font-size:1.2em" class="material-icons">mode_edit</i></a>
+                    <a asp-action="Details" asp-route-id="@item.Id"><i style="color:green; font-size:1.2em" class="material-icons">info</i></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id"><i style="color:red; font-size:1.2em" class="material-icons">delete</i></a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
+
+@section Scripts {
+    <script>
+        const gg = $("table#indexTable").Grid({
+            search: true,
+            sort: true,
+            resizable: true,
+        });
+
+    </script>
+}

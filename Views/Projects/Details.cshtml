@@ -1,63 +1,140 @@
-﻿@model mvc_energy_plants.Models.Project
+﻿@using mvc_energy_plants.Models;
+
+@model Tuple<Project ,List<ProjectStopLog>>
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Details Project</h1>
+
 
 <div>
-    <h4>Project</h4>
+    <a class="btn btn-primary" asp-action="Index"><i class="material-icons">arrow_back</i></a>
+    <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@Model?.Item1.Id"><i class="material-icons">mode_edit</i></a>
+</div>
+
+<div>
+
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Item1.Name)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Item1.Name)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Code)
+            @Html.DisplayNameFor(model => model.Item1.Code)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Code)
+            @Html.DisplayFor(model => model.Item1.Code)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CustomerName)
+            @Html.DisplayNameFor(model => model.Item1.CustomerName)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CustomerName)
+            @Html.DisplayFor(model => model.Item1.CustomerName)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Country)
+            @Html.DisplayNameFor(model => model.Item1.Country)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Country)
+            @Html.DisplayFor(model => model.Item1.Country)
+        </dd>
+
+
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Item1.PowerGeneration)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Item1.PowerGeneration)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PowerGeneration)
+            @Html.DisplayNameFor(model => model.Item1.Longitude)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PowerGeneration)
+            @Html.DisplayFor(model => model.Item1.Longitude)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Longitude)
+            @Html.DisplayNameFor(model => model.Item1.Latitude)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Longitude)
+            @Html.DisplayFor(model => model.Item1.Latitude)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Latitude)
+            @Html.DisplayNameFor(model => model.Item1.StartDate)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Latitude)
-        </dd>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.StartDate)
+            @Html.DisplayFor(model => model.Item1.StartDate)
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+
+<hr />
+
+<a asp-controller="ProjectStopLogs" asp-action="Create" asp-route-projectId="@Model?.Item1.Id"><i class="material-icons" style="font-size:36px">note_add</i></a>
+
+@if (Model?.Item2 != null)
+{
+    <div>
+        <table id="tble" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Item2.FirstOrDefault().StopDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Item2.FirstOrDefault().Classification)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Item2.FirstOrDefault().Cause)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Item2.FirstOrDefault().Action)
+                    </th>
+                    <th>
+
+                    </th>
+
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Item2)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.StopDate)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Classification)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Cause)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Action)</td>
+
+                        <td>
+
+
+                            <a asp-controller="ProjectStopLogs" asp-action="Edit" asp-route-id="@item.Id"><i style="font-size:1.2em" class="material-icons">mode_edit</i></a>
+                            <a asp-controller="ProjectStopLogs" asp-action="Details" asp-route-id="@item.Id"><i style="color:green; font-size:1.2em" class="material-icons">info</i></a>
+                            <a asp-controller="ProjectStopLogs" asp-action="Delete" asp-route-id="@item.Id"><i style="color:red; font-size:1.2em" class="material-icons">delete</i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+
+}
+else
+{
+    <div>No data</div>
+}
+
+
+
+
+@section Scripts{
+    <script>
+        $("table#tble").Grid();
+    </script>
+}

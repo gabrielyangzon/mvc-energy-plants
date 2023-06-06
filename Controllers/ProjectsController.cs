@@ -76,7 +76,7 @@ namespace mvc_energy_plants.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Code,CustomerName,Country,PowerGeneration,Longitude,Latitude")] Project project)
+        public async Task<IActionResult> Create([Bind("Id,Name,Code,CustomerName,Country,PowerGeneration,Longitude,Latitude,StartDate")] Project project)
         {
             if (ModelState.IsValid)
             {
@@ -108,7 +108,7 @@ namespace mvc_energy_plants.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Code,CustomerName,Country,PowerGeneration,Longitude,Latitude")] Project project)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Code,CustomerName,Country,PowerGeneration,Longitude,Latitude,StartDate")] Project project)
         {
             if (id != project.Id)
             {
@@ -133,7 +133,7 @@ namespace mvc_energy_plants.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Projects", new { id = project.Id });
             }
             return View(project);
         }

@@ -16,13 +16,16 @@ function formSubmit(type) {
         .then((accept) => {
             if (accept) {
 
-                swal("Success", {
-                    icon: "success",
-                });
+                document.getElementById(type).submit()
 
-                setTimeout(() => {
-                    document.getElementById(type).submit()
-                }, 900)
+                //swal("Success", {
+                //    icon: "success",
+                //    showConfirmButton: false
+                //});
+
+                //setTimeout(() => {
+
+                //}, 900)
 
 
             }

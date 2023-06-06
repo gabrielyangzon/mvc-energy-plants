@@ -6,10 +6,9 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details Project</h1>
-
 
 <div>
+    <h3>Details Project</h3>
     <a class="btn btn-primary" asp-action="Index"><i class="material-icons">arrow_back</i></a>
     <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@Model?.Item1.Id"><i class="material-icons">mode_edit</i></a>
 </div>
@@ -17,59 +16,66 @@
 <div>
 
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Item1.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Item1.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Item1.Code)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Item1.Code)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Item1.CustomerName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Item1.CustomerName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Item1.Country)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Item1.Country)
-        </dd>
+    <div class="row">
+        <div class="col">
+            <dl class="row">
 
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Item1.Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Item1.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Item1.Code)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Item1.Code)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Item1.CustomerName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Item1.CustomerName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Item1.Country)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Item1.Country)
+                </dd>
 
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Item1.PowerGeneration)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Item1.PowerGeneration)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Item1.Longitude)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Item1.Longitude)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Item1.Latitude)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Item1.Latitude)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Item1.StartDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Item1.StartDate)
-        </dd>
-    </dl>
+            </dl>
+        </div>
+        <div class="col">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Item1.PowerGeneration)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Item1.PowerGeneration)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Item1.Longitude)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Item1.Longitude)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Item1.Latitude)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Item1.Latitude)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Item1.StartDate)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Item1.StartDate)
+                </dd>
+            </dl>
+        </div>
+    </div>
 </div>
 
 

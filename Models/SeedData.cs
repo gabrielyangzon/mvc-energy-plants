@@ -15,6 +15,7 @@ namespace mvc_energy_plants.Models
                     throw new ArgumentNullException("Null RazorPagesProjectContext");
                 }
 
+                context.Database.EnsureCreated();
                 // Look for any Projects.
                 if (context.Project.Any())
                 {
@@ -68,7 +69,73 @@ namespace mvc_energy_plants.Models
                         Longitude = 0,
                         Latitude = 0,
                         StartDate = DateTime.Parse("2020-12-12")
-                    }
+                    },
+                      new Project
+                      {
+                          Name = "SG Test Project 1",
+                          Code = "SG1",
+                          CustomerName = "Grab",
+                          Country = "SG",
+                          PowerGeneration = 200,
+                          Longitude = 0,
+                          Latitude = 0,
+                          StartDate = DateTime.Parse("2020-12-12")
+                      },
+                       new Project
+                       {
+                           Name = "SG Test Project 2",
+                           Code = "SG2",
+                           CustomerName = "Grab",
+                           Country = "SG",
+                           PowerGeneration = 150,
+                           Longitude = 0,
+                           Latitude = 0,
+                           StartDate = DateTime.Parse("2020-12-12")
+                       },
+                          new Project
+                          {
+                              Name = "SG Test Project 3",
+                              Code = "SG3",
+                              CustomerName = "Grab",
+                              Country = "SG",
+                              PowerGeneration = 300,
+                              Longitude = 0,
+                              Latitude = 0,
+                              StartDate = DateTime.Parse("2020-12-12")
+                          },
+                           new Project
+                           {
+                               Name = "SG Test Project 4",
+                               Code = "SG4",
+                               CustomerName = "Grab",
+                               Country = "SG",
+                               PowerGeneration = 300,
+                               Longitude = 0,
+                               Latitude = 0,
+                               StartDate = DateTime.Parse("2020-12-12")
+                           },
+                            new Project
+                            {
+                                Name = "SG Test Project 4",
+                                Code = "SG4",
+                                CustomerName = "Grab",
+                                Country = "SG",
+                                PowerGeneration = 300,
+                                Longitude = 0,
+                                Latitude = 0,
+                                StartDate = DateTime.Parse("2020-12-12")
+                            },
+                             new Project
+                             {
+                                 Name = "SG Test Project 5",
+                                 Code = "SG5",
+                                 CustomerName = "Grab",
+                                 Country = "SG",
+                                 PowerGeneration = 300,
+                                 Longitude = 0,
+                                 Latitude = 0,
+                                 StartDate = DateTime.Parse("2020-12-12")
+                             }
                 );
                 context.SaveChanges();
             }

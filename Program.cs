@@ -1,10 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using mvc_energy_plants.Extensions.cs;
 using mvc_energy_plants.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<energy_plantsContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("energy_plantsContext") ?? throw new InvalidOperationException("Connection string 'energy_plantsContext' not found.")));
+
+builder.Services.ConfigureDbContext(builder);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

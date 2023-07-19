@@ -1,20 +1,21 @@
 ﻿@model IEnumerable<mvc_energy_plants.Models.Project>
+@using System.Web.Helpers
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Project List</h1>
-
-<p>
-    <a asp-action="Create"><i class="material-icons" style="font-size:36px">note_add</i></a>
-</p>
-
 
 
 <table id="indexTable" class="table table-bordered table-hover">
+
+
+
+    <a asp-action="Create"><i class="material-icons" style="font-size:36px">note_add</i></a>
+
     <thead>
         <tr>
+
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
@@ -41,6 +42,7 @@
         @foreach (var item in Model)
         {
             <tr>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
@@ -72,6 +74,10 @@
     </tbody>
 </table>
 
+<div>
+    <canvas id="myChart" height="60"></canvas>
+</div>
+
 
 @section Scripts {
     <script>
@@ -79,7 +85,39 @@
             search: true,
             sort: true,
             resizable: true,
+            pagination: {
+                limit: 5,
+                summary: false
+            }
         });
 
+        const ctx = document.getElementById('myChart');
+        var data1 = JSON.parse('@Html.Raw(Json.Serialize(ViewBag.ChartValue))')
+        console.log(data1)
+        data1.forEach(x => console.log(x))
+
+
+
+
+
+        new Chart(ctx, {
+            type: 'bar',
+
+            data: {
+                labels: data1.map(x => x.year),
+                datasets: [{
+                    label: 'Operation Year',
+                    data: data1.map(x => x.count),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
     </script>
 }

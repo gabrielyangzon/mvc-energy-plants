@@ -37,6 +37,11 @@ namespace mvc_energy_plants.Controllers
             }
 
 
+            ViewBag.ChartValue = projects
+                .GroupBy(x => x.StartDate)
+                .Select(std => new { year = std.Key.Year, count = std.Count() })
+                .ToList();
+
             return View(await projects.ToListAsync());
 
         }
